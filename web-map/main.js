@@ -21,15 +21,24 @@ const pointStyle = (color) => { return {
   fillOpacity: 0.7
 }};
 
+window.districts = new Set();
+
 function loadDisctrict(district) {
 
   function addGeoJSON(path, style) {
     console.log(path, "is loading")
-    fetchJSON(path).then(function(data) {
-      data['features'].filter(f => f.properties.Attributes.District == district).forEach(feature => L.geoJSON(feature, 
-      {pointToLayer: function (feature, latlng) {
-        return L.circleMarker(latlng, style);
-      }}).bindPopup('<code>'+JSON.stringify(feature.properties.Attributes, undefined, 2)+'</code>').addTo(map))
+
+    fetchJSON(path).then(data => {  
+
+      if (window.districts.size == 0)
+      { data['features'].forEach((f) => window.districts.add(f.properties.Attributes.District)) }
+
+      data['features'].filter(f => f.properties.Attributes.District == district).forEach(
+        feature => L.geoJSON
+        ( feature
+        , {pointToLayer:  (feature, latlng) => L.circleMarker(latlng, style)}
+        ).bindPopup('<code>'+JSON.stringify(feature.properties.Attributes, undefined, 2)+'</code>').addTo(map)
+      )
       console.log(path, "is loaded")
     })
   }
