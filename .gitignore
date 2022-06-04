@@ -1,0 +1,4 @@
+*.json
+*.geojson
+.DS_Store
+
