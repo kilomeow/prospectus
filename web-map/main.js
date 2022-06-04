@@ -1,4 +1,4 @@
-const map = L.map('map').setView([55.75577, 37.70336], 13);
+const map = L.map('map').setView([55.5844, 37.6536], 15);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -61,3 +61,5 @@ function loadDisctrict(district) {
 }
 
 window.loadDisctrict = loadDisctrict
+
+window.printDistricts = () => {for (let d of window.districts) {console.log(d)}}
