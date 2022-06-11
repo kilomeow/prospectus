@@ -1,4 +1,4 @@
+*.idea
 *.json
 *.geojson
 .DS_Store
-

@@ -21,7 +21,6 @@
 			.container{
 				box-sizing: border-box;
 				margin: auto;
-				max-width: 10;
 				padding: 0 20px;
 				max-width: 1240px;
 				width: 100%;
@@ -138,7 +137,11 @@
 			}
     </style>
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="" />
+  	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+	<script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js" crossorigin=""></script>
+	<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js" crossorigin=""></script>
   </head>
   <body>
     <div>
@@ -173,12 +176,12 @@
 					</p>
 				</article>
 				 <div class="container" style="margin-bottom: 1em;">
-					<input type="text" name="find" class="field" placeholder="Найти район" />
+					 <select id="district-selector" name="find" class="field"></select>
 				</div>
 				<div id="map" class="map"></div>
 				<script type="module" src="/main.js"></script>
 				<script type="module">
-				  window.loadDisctrict('район Бирюлёво Западное')
+					window.init();
 				</script>
 			</main>
 			<footer class="footer">
