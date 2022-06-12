@@ -23,6 +23,16 @@ const pointStyle = (color) => { return {
 
 window.districts = new Set();
 
+function popupPointDescription(attributes) {
+  const description = document.createElement('div')
+  attributes.keys().forEach((k) => {
+    const field = document.createElement('p')
+    field.innerHTML = "<b>" + k + ":</b> " + attributes[k]
+    description.appendChild(field)
+  })
+  return description
+}
+
 function loadDisctrict(district) {
 
   function addGeoJSON(path, style) {
@@ -37,7 +47,7 @@ function loadDisctrict(district) {
         feature => L.geoJSON
         ( feature
         , {pointToLayer:  (feature, latlng) => L.circleMarker(latlng, style)}
-        ).bindPopup('<code>'+JSON.stringify(feature.properties.Attributes, undefined, 2)+'</code>').addTo(map)
+        ).bindPopup(popupPointDescription(feature.properties.Attributes).innerHTML).addTo(map)
       )
       console.log(path, "is loaded")
     })
@@ -49,7 +59,7 @@ function loadDisctrict(district) {
       data['features'].filter(f => f[1].properties.District == district).forEach(feature => L.geoJSON(feature[1],
       {pointToLayer: function (feature, latlng) {
         return L.circleMarker(latlng, style);
-      }}).bindPopup('<code>'+JSON.stringify(feature[1].properties, undefined, 2)+'</code>').addTo(map))
+      }}).bindPopup(popupPointDescription(feature[1].properties).innerHTML).addTo(map))
       console.log(path, "is loaded")
     })
   }
