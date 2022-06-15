@@ -25,11 +25,7 @@ window.districts = new Set();
 
 function popupPointDescription(attributes) {
   const description = document.createElement('div')
-  attributes.keys().forEach((k) => {
-    const field = document.createElement('p')
-    field.innerHTML = "<b>" + k + ":</b> " + attributes[k]
-    description.appendChild(field)
-  })
+  description.innerHTML = Object.keys(attributes).map(k => ("<b>" + k + ":</b> " + JSON.stringify(attributes[k]))).join("<hr>")
   return description
 }
 
