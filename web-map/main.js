@@ -89,7 +89,16 @@ function loadDistrict(district) {
   const districtFeatures = features.filter(feature => feature.properties.District === district)
   let latMin, latMax, lngMin, lngMax;
 
+  //const already_added = new Array();
+
   districtFeatures.forEach(function (feature) {
+    // get coordinates and check if it's already added
+    const [x, y] = feature.geometry.coordinates;
+    /*
+    if (already_added.includes({x, y})) {return}
+    already_added.push({x, y})
+    */
+
     // color and radius of a camera
     const color = camera_type_color[feature.properties.camera_type]
     const radius = camera_radius[feature.properties.camera_type]
@@ -104,7 +113,6 @@ function loadDistrict(district) {
     }).bindPopup(popupPointDescription(feature.properties).innerHTML).addTo(map)
 
     // calculate min-max lat/lng
-    const [x, y] = feature.geometry.coordinates;
     latMin = latMin && latMin < x ? latMin : x;
     latMax = latMax && latMax > x ? latMax : x;
     lngMin = lngMin && lngMin < y ? lngMin : y;
