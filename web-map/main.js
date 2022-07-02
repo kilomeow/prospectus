@@ -14,9 +14,9 @@ function fetchJSON(url) {
 }
 
 const camera_type_color = {
-  mass: '#ffa87d',
-  dvor: '#f1ffab',
-  podez: "#78ffd2"
+  mass: '#ff732e',
+  dvor: '#faff5c',
+  podez: "#ff63bc"
 }
 
 const pointStyle = (color) => { return {
@@ -100,7 +100,7 @@ function loadDistrict(district) {
     }).addTo(map)
     // add camera radius circle
     L.geoJSON(feature, {
-      pointToLayer: (feature, latlng) => L.circle(latlng, radius, {color, fillOpacity:.5, weight:0})
+      pointToLayer: (feature, latlng) => L.circle(latlng, radius, {color, fillOpacity:.35, weight:0})
     }).bindPopup(popupPointDescription(feature.properties).innerHTML).addTo(map)
 
     // calculate min-max lat/lng
