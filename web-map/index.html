@@ -1,194 +1,112 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Карта камер наблюдения в москве</title>
-    <link rel="shortcut icon" type="image/x-icon" href="docs/images/favicon.ico">
-		<script src="https://cdn.jsdelivr.net/npm/the-new-css-reset@1.6.1/css/reset.min.css"></script>
-    <style>
-			@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
-			*{
-				font-family: Roboto, sans-serif;
-			}
-      html, body {
-        height: 100%;
-        margin: 0;
-				color: #000;
-      }
-			.title{
-				font-size: 24px;
-			}
-			.container{
-				box-sizing: border-box;
-				margin: auto;
-				padding: 0 20px;
-				max-width: 1240px;
-				width: 100%;
-			}
-			.header{
-				background-color: #222;
-				color: #fff;
-				position: fixed;
-				display: flex;
-				align-items: center;
-				left: 0;
-				top: 0;
-				width: 100%;
-			}
-			.header a{
-				color: #fff;
-				font-weight: 600;
-			}
-			.main{
-				padding-top: 70px;
-			}
-			.main p{
-				font-size: 18px;
-				line-height: 24px;
-			}
-			#map{
-				background-color: cornsilk;
-				height: 440px;
-				width: 100%;
-			}
-			.map-region{
-				display: flex;
-				/* flex-direction: column; */
-				overflow: auto;
-			}
-			.footer{
-				align-items: center;
-				background-color: #222;
-				color: #fff;
-				display: flex;
-				height: 40px;
-				font-weight: bold;
-			}
-			.footer *{
-				font-size: 14px;
-			}
-			.footer .container{
-				display: flex;
-				justify-content: space-between;
-			}
-			.footer a, .main a{
-				color: #fc4a4d;
-				text-decoration: none;
-				transition: .6s;
-			}
-			.footer a:hover{
-				color: #d03739;
-			}
-			.field {
-				border: 1px solid #e5e5e5;
-				border-radius: 4px;
-				box-sizing: border-box;
-				display: inline-block;
-				font-size: 18px;
-				line-height: 48px;
-				margin: 10px 0 0;
-				transition: .2s;
-				padding: 0 20px;
-				width: 100%;
-			}
-			.article{
-				text-align: justify;
-			}
-			.article-title{
-				font-size: 32px;
-			}
-			.s-select-option{
-				display: block;
-				padding: 0 20px;
-				/* width: 100%; */
-				height: 50px;
-				overflow: hidden;
-				text-overflow: ellipsis;
-				white-space: nowrap;
-				background-color: transparent;
-				border: none;
-				color: #707070;
-				cursor: pointer;
-				font-size: 18px;
-				height: 50px;
-				text-align: left;
-			}
-			.s-select-option:hover,.s-select-option.active{
-				color: #111;
-				background-color: #f6f6f6;
-			}
-			.first-image{
-				float: left;
-				width: 50%;
-				margin-right: 60px;
-				margin-bottom: 50px;
-				display: inline-flex;
-				height: auto;
-				object-fit: cover;
-			}
-			.article-top{
-				display: flex;
-			}
-			.article-top p{
-				margin-top: 0;
-			}
-			.article-top-last{
-				font-style: italic;
-			}
-    </style>
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="" />
-  	<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
-	<script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js" crossorigin=""></script>
-	<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js" crossorigin=""></script>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" crossorigin="" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+    <script src="https://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js" crossorigin=""></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js" crossorigin=""></script>
   </head>
   <body>
-    <div>
-			<header class="header">
-				<div class="container">
-					<h1 class="title">
-						Карта камер наблюдения в Москве
-					</h1>
-				</div>
-			</header>
-			<main class="main">
-				<article class="article container">
-					<h1 class="article-title">Пять лучших районов для активистов, где вы точно не попадетесь на глаза камере с распознаванием лиц.</h1>
-					<div class="article-top">
-						<img class="first-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fkalibr20.ru%2Fwp-content%2Fuploads%2F2020%2F10%2FLuchshie-kamery-nablyudeniya-1024x1024.jpg&f=1&nofb=1" alt="" />
-						<p>В современной Москве угрозой безопасности активистов стало наблюдение с камер наружного наблюдения и других средств видеослежки. По данным ОВД-инфо, только за время протестов в 2021 году более 200 человек были задержаны постфактум благодаря системе распознавания <a href="https://reports.ovdinfo.org/kak-vlasti-ispolzuyut-kamery-i-raspoznavanie-lic-protiv-protestuyushchih" target="_blank">лиц</a>.
-							На данный момент камер, способных идентифицировать человека в Москве, становится с каждым годом все больше. Для многих активистов встает вопрос о том, в каких районах или муниципальных поселениях Москвы они могут чувствовать себя в безопасности и где они с наименьшей вероятностью могут быть вычислены и найдены через обычную уличную камеру или камеру на домофоне. Для того, чтобы уменьшить вероятность попадания в область действия подобных устройств, мы подготовили специальную карту, на которую нанесены практически все камеры уличного слежения. Она позволит уменьшить риск попадания в опасные зоны, а также станет хорошим средством предотвращения неприятных ситуаций, когда активист оказывался под большим количеством камер и таким образом оказывался под ударом</p>
-					</div>
-					<p>Также мы подготовили список из трёх наиболее безопасных районов с точки зрения слежки по камерам. Представленные территории наименее плотно покрыты инструментами видеослежки (включая дворовые и подъездные камеры), а значит, вероятность “попасться” камере будет минимальной. Акцент сделан на районы, в которых количество камер на квадратный километр является минимальным, но при этом плотность населения позволяет затеряться в толпе, что также позволит избежать преследования более старыми методами. </p>
-					<p>В целом, все три района отлично подходят для того, чтобы укрыться в них на какое-то время и не быть замеченными со стороны камер, умеющих различать лица. Топ носит рекомендательный характер и не призывает локализоваться именно в тех частях Москвы, которые мы обозначили. Обеспечение собственной личной безопасности по-прежнему остается ответственностью самих активистов, мы лишь предлагаем инструмент для упрощения жизни. При этом размещение районов на разных ступенях “пьедестала” носит условный характер, с точки зрения безопасности в области защиты от слежки они находятся примерно на одном уровне.</p>
-					<p>Для определения того, какие районы наименее подвержены слежке со стороны камер, мы использовали открытые данные о расположении камер с сайта <a href="https://data.mos.ru/" target="_blank">data.mos.ru</a>. Двумя критериями, на основе которых мы определяли безопасность районов были количество камер наружного слежения на квадратный километр и количество человек на одну камеру. Для нас было важно, чтобы выбранные районы не граничили с крупными жилыми массивами Московской области, так как про Подмосковье у нас нет информации о расположении камер в открытом доступе. Это сделано во избежание ощущения мнимой безопасности, когда пользователи нашей карты могли бы подумать, что на территории района и граничащих с ним жилых комплексов практически отсутствуют камеры, что в действительности не так. Также в выборку не попали районы и муниципальные образования, которые находятся в ТиНАО, так как они находятся довольно далеко от центра города и общественной жизни и которые имеют слишком низкую плотность населения, что может привести к угрозе слежки традиционными методами. </p>
-					<img src="https://www.zelao.ru/files/cache/900x600_adaptiveResize_mar19_ktd.jpg" alt="" />
-					<p>Первый район, который мы обозначим как условно безопасный с точки зрения камер, – район Савёлки Зеленоградского административного округа. Несмотря на то, что сам Зеленоград окружён территорией Московской области, камеры которой не отображаются на карте, мы можем считать его довольно безопасным местом. Он не граничит с крупными жилыми массивами МО, поэтому попадание в “слепую” зону, где возможно оказаться под камерой, практически невозможно. При этом здесь довольно низкое количество камер на квадратный метр и высокая плотность населения относительно тех же устройств слежения. Сам район при этом является довольно зеленым и комфортным для жизни и, несмотря на свою удаленность от остальной Москвы, имеет довольно хорошую транспортную связь с ним. </p>
-					<img src="https://www.zelao.ru/files/cache/900x600_adaptiveResize_jul19_savep.jpg" alt="" />
-					<p>Вторым районом, который мы также считаем довольно безопасным, является район Силино. Он также находится в Зеленоградском административном округе, про который мы писали выше, и расположен неподалеку от района Савёлки.</p>
-					<img src="https://www.interfax.ru/ftproot/textphotos/2017/08/31/bir700.jpg" alt="" />
-					<p>Третий район, который также можно рассмотреть с точки зрения относительной безопасности, – Бирюлево-Западное, которое также является окраиной Москвы. Здесь низкое количество камер на квадратный километр, а количество людей на одно устройство слежения гораздо выше, чем в Зеленограде. При этом район обладает большой площадью, что позволяет буквально затеряться в каменных джунглях. </p>
-					<img src="birylevo.png" alt="" style="border: solid black 2px"/>
-					<p>На этом наш топ заканчивается. Мы еще раз напоминаем, что информация, изложенная выше, носит рекомендательный характер и не является конечным средством для решения всех проблем. Также обращаем ваше внимание на то, что карта покрывает территорию всей Москвы, что значительно упростит ваши передвижения по городу и позволит все меньше и меньше попадаться в обзор камер наружного слежения.</p>
-					<p class="article-top-last">
-						P.S.: худшими районами с точки зрения безопасности от слежки с видеокамер по нашему мнению являются следующие районы: Басманный, Мещанский и Теплый стан. Здесь приходится довольно большое количество камер на квадратный километр, а плотность насселения не позволяет затеряться в толпе.
-					</p>
-				</article>
-				 <div class="container" style="margin-bottom: 1em;">
-					 <select id="district-selector" name="find" class="field"></select>
-				</div>
-				<div id="map" class="map"></div>
-				<script type="module" src="/main.js"></script>
-				<script type="module">
-					window.init();
-				</script>
-			</main>
-			<footer class="footer">
-				<div class="container">
-					© <a href="https://roskomsvoboda.org/">roskomsvoboda</a> <span>2022 г.</span>
-				</div>
-			</footer>
-		</div>
+    <div id="district-select">
+      <button id="district-select-label">Выберите район</button>
+      <div id="district-select-options">
+      </div>
+    </div>
+    <div id="map"></div>
+    <script type="module" src="./main.js"></script>
+    <script type="module">
+      window.init();
+    </script>
   </body>
+  <style>
+
+  /* The container <div> - needed to position the dropdown content */
+    #district-select {
+      font-family: 'Courier New', Courier, monospace;
+      position: absolute;
+      display: inline-block;
+      top: 0;
+      right: 0;
+      z-index: 1000 !important;
+      font-size: 16px;
+    }
+    
+    #district-select > button {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      background-color: #245f49;
+      color: white;
+      padding: 0.5em;
+      border: none;
+    }
+
+    /* Dropdown Content (Hidden by Default) */
+    #district-select-options {
+      display: none;
+      position: absolute;
+      right:0;
+      background-color: #333;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      max-height: calc(100vh - 2em);
+      overflow: auto;
+    }
+
+    /* Links inside the dropdown */
+    #district-select-options > a {
+      font-size: 11px;
+      color: white;
+      padding: 0.25em 0.5em;
+      text-decoration: none;
+      display: block;
+    }
+
+/* Change color of dropdown links on hover */
+#district-select-options > a:hover {background-color: #555;}
+
+/* Show the dropdown menu on hover */
+#district-select:hover #district-select-options {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+#district-select:hover > button {background-color: #3e8e41;} 
+
+    #map {
+      z-index: 0 !important;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    :root {
+        --map-tiles-filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+    }
+
+    .map-tiles {
+        filter:var(--map-tiles-filter, none);
+	  }
+
+    .leaflet-popup-content-wrapper {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 11px;
+      color: white !important;
+      color: black !important;
+      font-weight: 300;
+      padding: 0px !important;
+      box-shadow: none !important;
+      background-color: #333;
+      border: 1px solid #333;
+    }
+
+    .leaflet-popup-content {
+      color: white !important;
+    }
+  </style>
 </html>

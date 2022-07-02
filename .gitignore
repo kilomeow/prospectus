@@ -2,3 +2,4 @@
 *.json
 *.geojson
 .DS_Store
+web-map/CNAME
