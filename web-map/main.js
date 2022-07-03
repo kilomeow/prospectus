@@ -70,6 +70,9 @@ function generateHeatMap() {
 }
 
 function loadDistrict(district) {
+
+  document.getElementById('soundtrack').play()
+
   if (markersLayer) {
     map.removeLayer(markersLayer);
   }
