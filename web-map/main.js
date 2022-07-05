@@ -71,7 +71,7 @@ function generateHeatMap() {
 
 function loadDistrict(district) {
 
-  document.getElementById('soundtrack').play()
+  //document.getElementById('soundtrack').play()
 
   if (markersLayer) {
     map.removeLayer(markersLayer);
@@ -129,9 +129,22 @@ function loadDistrict(district) {
   heatLayer.remove()
 }
 
+function addPopupButton() {
+  let p = document.querySelector('.popup')
+  let b = document.createElement('button')
+  b.innerText = 'Начать'
+  let h = document.createElement('div')
+  h.className = 'holder'
+  h.appendChild(b)
+  p.removeChild(p.querySelector('.holder'))
+  p.appendChild(h)
+  b.onclick = () => {p.style.display = 'none'}
+}
+
 window.init = function () {
   return loadPoints().then(function () {
     generateHeatMap()
     loadDistrictList()
+    addPopupButton()
   });
 }
